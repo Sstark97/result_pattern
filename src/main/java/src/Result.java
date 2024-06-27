@@ -17,7 +17,7 @@ public class Result<T> {
     return false;
   }
 
-  <T> T value() {
+  T value() {
     return null;
   }
 

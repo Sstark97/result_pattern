@@ -1,5 +1,6 @@
 package src;
 
+
 public class Main {
   public static void main(String[] args) {
     Result<Integer> result = Result.success(42);
