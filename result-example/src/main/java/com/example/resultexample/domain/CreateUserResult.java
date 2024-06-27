@@ -1,8 +1,8 @@
 package com.example.resultexample.domain;
 
 public class CreateUserResult {
-    private User user;
-    private Error error;
+    private final User user;
+    private final Error error;
 
     public User getUser() {
         return user;

@@ -1,10 +1,13 @@
 package com.example.resultexample.infraestructure;
 
+import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class UserControllerTest {
@@ -20,6 +23,10 @@ class UserControllerTest {
         var response = userController.createUser(userRequest);
 
         assertEquals(200, response.getStatusCode().value());
+        assertTrue(Objects.nonNull(response.getBody()));
+        assertEquals("username", response.getBody().getUsername());
+        assertEquals("password", response.getBody().getPassword());
+        assertEquals("email", response.getBody().getEmail());
     }
 
     @Test

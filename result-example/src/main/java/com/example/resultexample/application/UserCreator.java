@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserCreator {
-
     private final UserRepository userRepository;
 
     public UserCreator(UserRepository userRepository) {
@@ -15,7 +14,11 @@ public class UserCreator {
     }
 
     public CreateUserResult execute(CreateUserCommand createUserCommand) {
-        final CreateUserResult createUserResult = User.from(createUserCommand.username(), createUserCommand.password(), createUserCommand.email());
+        final CreateUserResult createUserResult = User.from(
+            createUserCommand.username(),
+            createUserCommand.password(),
+            createUserCommand.email()
+        );
         if(createUserResult.isSuccess()){
             userRepository.save(createUserResult.getUser());
         }

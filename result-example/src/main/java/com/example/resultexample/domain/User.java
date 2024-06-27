@@ -1,9 +1,9 @@
 package com.example.resultexample.domain;
 
 public class User {
-    private String username;
-    private String password;
-    private String email;
+    private final String username;
+    private final String password;
+    private final String email;
 
     private User(String username, String password, String email){
         this.username = username;
@@ -22,5 +22,17 @@ public class User {
             return CreateUserResult.invalidEmail();
         }
         return CreateUserResult.success(new User(username, password, email));
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

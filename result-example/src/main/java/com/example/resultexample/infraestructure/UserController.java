@@ -4,6 +4,7 @@ import com.example.resultexample.application.CreateUserCommand;
 import com.example.resultexample.application.UserCreator;
 import com.example.resultexample.domain.CreateUserResult;
 import com.example.resultexample.domain.Error;
+import com.example.resultexample.domain.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest) {
         CreateUserResult createUserResult = userCreator.execute(
                 new CreateUserCommand(userRequest.username(), userRequest.password(), userRequest.email())
         );
@@ -36,6 +37,6 @@ public class UserController {
                 return ResponseEntity.internalServerError().build();
             }
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(createUserResult.getUser());
     }
 }

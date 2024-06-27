@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class FakeRepository implements UserRepository {
-
     @Override
     public void save(User user) {
-
+        // Save user
     }
 }
